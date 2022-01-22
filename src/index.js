@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import 'bootstrap/dist/css/bootstrap.css'; // pulls the css file from out of the modules directory
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
