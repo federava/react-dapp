@@ -1,3 +1,57 @@
+# Ethereum Dapp with React JS
+
+This project aims to create a simple Dapp with React.
+
+The tutorias is this [video](https://www.youtube.com/watch?v=AiWkkj8lSTc) of [Dapp University](https://www.dappuniversity.com/)
+
+
+## Resources
+
+We will use create-react-app (CRA) to initialize the project easily.
+
+web3.js will provide interaction with Metamask .
+
+Bootstrap is utilized to provide a nice interface, nothing too fancy.
+
+## Steps
+
+* npm install create-react-app
+* create-react-app
+* npm install web3
+* npm install react-bootstrap bootstrap
+* See next section
+* npm start
+
+## Troubleshooting, fixes & changes
+
+The project can't run if you follow exactly the steps of the video, I introduced some changes.
+
+**Error**
+*Compiled with problems: ERROR in ./node_modules/cipher-base/index.js 3:16-43 ... etc*
+
+**Solution**
+*Downgrade react scripts because web3.js was throwing an error* [link](https://stackoverflow.com/questions/70472965/web3-issue-react-application-not-compiling/70512623#70512623)
+* npm uninstall react-scripts
+* npm i react-scripts@4.0.3
+
+**App.js considerations**
++ ~~componentWillMount~~ componentDidMount
++ App.js file has App as a funtion, make it a class as in the video.
+
+
+## Comments and notes
+
+* Uses async await pattern because interactiang with a blockchain is about asyncronous interactions. 
+* givenProvider is Metamask in case it is installed.
+
+**By Federico**
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
