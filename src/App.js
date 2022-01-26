@@ -20,7 +20,30 @@ class App extends Component {
     const accounts = await web3.eth.requestAccounts() // tengo que darle permiso desde Metamask
     console.log("account:",accounts[0])
     this.setState({ account: accounts[0]}) // update the state after the account loaded
+    
+    const weibalance = await web3.eth.getBalance(accounts[0])
+    const ethbalance = web3.utils.fromWei(weibalance, "ether")
+    console.log(web3.utils.fromWei(weibalance, "ether") + " ETH")
+    this.setState({ balance: ethbalance})
 
+    /*
+    web3.eth.getBalance(accounts[0], function(err, result) {
+      if (err) {
+        console.log(err)
+      } else {
+        console.log(web3.utils.fromWei(result, "ether") + " ETH")
+        const balance = web3.utils.fromWei(result, "ether")
+        this.setState({ balance: balance})
+      }
+    })
+    */
+
+
+    /*
+    // Fetch NFTs
+    const nfts = await ERC721.methods.userOwnedTokens.call(accounts[0])
+    console.log("NFTs:",nfts)
+    */
   }
 
   // We want to initialize the state
@@ -36,6 +59,8 @@ class App extends Component {
           <h1>Hello world</h1>
           <p>Connected to: { this.state.blockchain } </p>
           <p>Your account: { this.state.account } </p>
+          <p>ETH balance: { this.state.balance } </p>
+
         </header>
       </div>
     );
