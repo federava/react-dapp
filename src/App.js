@@ -24,7 +24,7 @@ class App extends Component {
     const weibalance = await web3.eth.getBalance(accounts[0])
     const ethbalance = web3.utils.fromWei(weibalance, "ether")
     console.log(web3.utils.fromWei(weibalance, "ether") + " ETH")
-    this.setState({ balance: ethbalance})
+    this.setState({ balance: ethbalance })
 
     /*
     web3.eth.getBalance(accounts[0], function(err, result) {
@@ -60,7 +60,6 @@ class App extends Component {
           <p>Connected to: { this.state.blockchain } </p>
           <p>Your account: { this.state.account } </p>
           <p>ETH balance: { this.state.balance } </p>
-
         </header>
       </div>
     );
