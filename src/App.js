@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import Web3 from 'web3'
 import './App.css'
+import Artblocks from "./contracts/Artblocks.json";
+
+
 
 class App extends Component {
   
@@ -8,24 +11,34 @@ class App extends Component {
 
     console.log("hola")
     this.loadBlockchainData()
+
+
   }
 
   async loadBlockchainData() {
     const web3 = new Web3(Web3.givenProvider || "http://localhost:8545")
     const network = await web3.eth.net.getNetworkType()
-    console.log("network:",network)
+    //console.log("network:",network)
     this.setState({ blockchain: network })
 
     // Fetch the account (use states of reacts -> store the account with the state object)
     const accounts = await web3.eth.requestAccounts() // tengo que darle permiso desde Metamask
-    console.log("account:",accounts[0])
+    //console.log("account:",accounts[0])
     this.setState({ account: accounts[0]}) // update the state after the account loaded
     
     const weibalance = await web3.eth.getBalance(accounts[0])
     const ethbalance = web3.utils.fromWei(weibalance, "ether")
-    console.log(web3.utils.fromWei(weibalance, "ether") + " ETH")
+    //console.log(web3.utils.fromWei(weibalance, "ether") + " ETH")
     this.setState({ balance: ethbalance })
 
+    //console.log(web3.eth)
+    //console.log(Artblocks)
+
+
+    const sc = new web3.eth.Contract(Artblocks.abi, '0xa7d8d9ef8d8ce8992df33d8b8cf4aebabd5bd270');
+    //console.log(sc)
+    const jscode = await sc.methods.projectScriptByIndex(166,0).call().then(console.log)
+    //console.log(jscode)
     /*
     web3.eth.getBalance(accounts[0], function(err, result) {
       if (err) {
